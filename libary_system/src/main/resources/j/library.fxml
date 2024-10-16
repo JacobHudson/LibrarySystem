@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="j.Controller">
     <top>
-        <HBox spacing="10">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <TextField fx:id="titleField" promptText="Title"/>
-            <TextField fx:id="authorField" promptText="Author"/>
-            <TextField fx:id="isbnField" promptText="ISBN"/>
-            <Button text="Add Book" onAction="#addBook"/>
-        </HBox>
+        <VBox spacing="10">
+            <!-- Book Addition Form -->
+            <HBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <TextField fx:id="titleField" promptText="Title"/>
+                <TextField fx:id="authorField" promptText="Author"/>
+                <TextField fx:id="isbnField" promptText="ISBN"/>
+                <Button text="Add Book" onAction="#addBook"/>
+            </HBox>
+            
+            <!-- Search Bar -->
+            <HBox spacing="10">
+                <padding>
+                    <Insets top="0" right="10" bottom="10" left="10"/>
+                </padding>
+                <Label text="Search:"/>
+                <TextField fx:id="searchField" promptText="Enter title or author"/>
+                <ComboBox fx:id="searchCriteriaBox" />
+                <Button text="Search" onAction="#handleSearch"/>
+                <Button text="Clear" onAction="#handleClearSearch"/>
+            </HBox>
+        </VBox>
     </top>
     <center>
         <TableView fx:id="tableView">
@@ -33,6 +49,7 @@
             </padding>
             <Button text="Check Out" onAction="#checkOutBook"/>
             <Button text="Check In" onAction="#checkInBook"/>
+            <Button fx:id="removeButton" text="Remove Book" onAction="#removeBook"/>
         </HBox>
     </bottom>
 </BorderPane>
